@@ -58,11 +58,11 @@ const Login = () => {
     //submit the data to server to generate token
     loginUser(loginDetail)
       .then((data) => {
-        console.log(data);
+        //console.log(data);
 
         //save the data to localstorage
         doLogin(data, () => {
-          console.log("Login detail is saved to localstorage");
+          //console.log("Login detail is saved to localstorage");
           //redirect to user dashboard page
           // userContxtData.setUser({
           //   data: data.user,

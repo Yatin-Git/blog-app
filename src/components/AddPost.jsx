@@ -88,9 +88,9 @@ const AddPost = () => {
         toast.success("Post Created !!")
         // console.log(post)
         setPost({
-            title: '',
-            content: '',
-            categoryId: ''
+            title: "",
+            content: "",
+            categoryId: ""
         })
     }).catch((error) => {
         toast.error("Post not created due to some error !!")
@@ -153,7 +153,7 @@ const AddPost = () => {
 
             <Container className="text-center">
               <Button type="submit" color="primary">Create Post</Button>
-              <Button color="danger" className="ms-2">
+              <Button  color="danger" className="ms-2">
                 Reset Content
               </Button>
             </Container>
