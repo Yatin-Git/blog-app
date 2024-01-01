@@ -63,8 +63,8 @@ function NewFeed() {
             <Post post={post} key={post.postId} />
           ))}
 
-          <Container className="mt-3">
-            <Pagination size="lg">
+          <Container className="mt-3 ">
+            <Pagination size="sm">
               <PaginationItem onClick={() => changePage(postContent.pageNumber-1)} disabled={postContent.pageNumber === 0}>
                 <PaginationLink previous> Previous</PaginationLink>
               </PaginationItem>
