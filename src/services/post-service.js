@@ -25,3 +25,8 @@ export const loadPost = (postId) => {
 export const createComment = (comment, postId) => {
   return privateAxios.post(`/post/${postId}/comments`, comment);
 };
+
+//delete post
+export function deletePostService(postId) {
+  return privateAxios.delete(`/posts/${postId}`).then((res) => res.data);
+}

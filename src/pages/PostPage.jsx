@@ -11,7 +11,7 @@ const PostPage = () => {
   const { postId } = useParams();
   const [post, setPost] = useState(null);
   const [comment, setComment] = useState({
-    conent: ''
+    content: ''
 })
   useEffect(() => {
     // load post of postId
@@ -21,10 +21,10 @@ const PostPage = () => {
         setPost(data);
       })
       .catch((error) => {
-        console.log(error);
+       
         toast.error("Error in loading post");
       });
-  }, []);
+  }, [postId]);
 
   const printDate = (numbers) => {
     return new Date(numbers).toLocaleDateString();
@@ -38,12 +38,13 @@ const PostPage = () => {
     }
 
     if(comment.content.trim()===''){
+      toast.error("Blank comment not allowed")
         return
     }
     createComment(comment,post.postId)
     .then(data=>{
-        console.log(data)
-        toast.success("comment added ..")
+        
+        toast.success("comment added successfully")
         setPost({
             ...post,
             comments:[...post.comments,data.data]
