@@ -1,11 +1,22 @@
+import userContext from "../context/userContext"
 import Base from "../components/Base"
 
-const Services=() =>{
-
+const Services = () => {
     return (
-    <Base>
-    <h1>This is Service page</h1>
-    </Base>
+        <userContext.Consumer>
+            {
+                (object) => (
+
+                    <Base>
+                        <h2>
+                            This is services page
+                        </h2>
+                        <h1>Welcome : {object.user.login && object.user.data.name}</h1>
+                    </Base>
+                )
+            }
+        </userContext.Consumer>
     )
 }
+
 export default Services

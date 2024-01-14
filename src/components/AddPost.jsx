@@ -11,7 +11,7 @@ import {
 import { loadAllCategories } from "../services/category-service";
 import JoditEditor from "jodit-react";
 import { toast } from "react-toastify";
-import {createPost as doCreatePost} from '../services/post-service'
+import {createPost as doCreatePost, uploadPostImage} from '../services/post-service'
 import { getCurrentUserDetail } from "../auth";
 
 const AddPost = () => {
@@ -30,6 +30,7 @@ const AddPost = () => {
     content: "",
     categoryId: "",
   });
+  const [image, setImage] = useState(null)
   useEffect(() => {
     setUser(getCurrentUserDetail())
     loadAllCategories()
@@ -48,6 +49,11 @@ const AddPost = () => {
   const contentFieldChanaged = (data) => {
     setPost({ ...post, 'content': data });
   };
+   //handling file chagne event
+   const handleFileChange=(event)=>{
+    console.log(event.target.files[0])
+    setImage(event.target.files[0])
+}
   //create post function
   const createPost = (event) => {
 
@@ -76,12 +82,12 @@ const AddPost = () => {
     doCreatePost(post).then(data => {
 
 
-        // uploadPostImage(image,data.postId).then(data=>{
-        //     toast.success("Image Uploaded !!")
-        // }).catch(error=>{
-        //     toast.error("Error in uploading image")
-        //     console.log(error)
-        // })
+        uploadPostImage(image,data.postId).then(data=>{
+            toast.success("Image Uploaded !!")
+        }).catch(error=>{
+            toast.error("Error in uploading image")
+            console.log(error)
+        })
 
 
 
@@ -131,6 +137,14 @@ const AddPost = () => {
                 onChange={(newContent) => contentFieldChanaged(newContent)}
               />
             </div>
+
+            {/* file field  */}
+
+            <div className="mt-3">
+                            <Label for="image">Select Post banner</Label>
+                            <Input id='image' type='file' multiple onChange={handleFileChange} accept="image/*"></Input>
+                        </div>
+
             <div className="my-3">
               <Label for="category"> Post Category</Label>
               <Input
