@@ -78,8 +78,7 @@ function deletePost(post) {
       <Row>
         <Col
           md={{
-            size: 10,
-            offset: 1,
+            size: 12
           }}
         >
           <h1>Blogs Count : {postContent?.totalElements}</h1>

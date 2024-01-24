@@ -42,3 +42,10 @@ export const uploadPostImage = (image, postId) => {
 export function deletePostService(postId) {
   return privateAxios.delete(`/posts/${postId}`).then((res) => res.data);
 }
+
+//get cateory wise posts
+export function loadPostCategoryWise(categoryId) {
+  return privateAxios
+    .get(`/category/${categoryId}/posts`)
+    .then((res) => res.data);
+}
