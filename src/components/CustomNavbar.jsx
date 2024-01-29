@@ -76,10 +76,9 @@ const CustomNavbar = () => {
                 <DropdownItem tag={ReactLink} to="/services">
                   Contact Us
                 </DropdownItem>
-                <DropdownItem>Careers</DropdownItem>
                 <DropdownItem divider />
-                <DropdownItem>Youtube</DropdownItem>
-                <DropdownItem>LinkedIn</DropdownItem>
+                <DropdownItem href="https://twitter.com/yatinsingh98" target="_blank">Twitter</DropdownItem>
+                <DropdownItem href="https://www.linkedin.com/in/yatinsingh/" target="_blank">LinkedIn</DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
@@ -96,7 +95,7 @@ const CustomNavbar = () => {
 
                 <NavItem>
                   <NavLink tag={ReactLink} to="/user/dashboard">
-                    {user.email}
+                    {user.name}
                   </NavLink>
                 </NavItem>
 

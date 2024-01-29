@@ -49,3 +49,7 @@ export function loadPostCategoryWise(categoryId) {
     .get(`/category/${categoryId}/posts`)
     .then((res) => res.data);
 }
+
+export function loadPostUserWise(userId) {
+  return privateAxios.get(`/user/${userId}/posts`).then((res) => res.data);
+}
