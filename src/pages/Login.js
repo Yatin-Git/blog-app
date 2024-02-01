@@ -12,15 +12,16 @@ import {
   Row,
 } from "reactstrap";
 import Base from "../components/Base";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import { loginUser } from "../services/user-service";
 import { doLogin } from "../auth";
 import { useNavigate } from "react-router-dom";
+import userContext from "../context/userContext";
 
 const Login = () => {
-  //const userContxtData = useContext(userContext);
-  // for navigating to dashboard after login
+  const userContxtData = useContext(userContext);
+  //for navigating to dashboard after login
   const navigate = useNavigate();
 
   const [loginDetail, setLoginDetail] = useState({
@@ -58,16 +59,16 @@ const Login = () => {
     //submit the data to server to generate token
     loginUser(loginDetail)
       .then((data) => {
-        //console.log(data);
+        console.log(data);
 
         //save the data to localstorage
         doLogin(data, () => {
-          //console.log("Login detail is saved to localstorage");
+          console.log("Login detail is saved to localstorage");
           //redirect to user dashboard page
-          // userContxtData.setUser({
-          //   data: data.user,
-          //   login: true,
-          // });
+          userContxtData.setUser({
+            data: data.user,
+            login: true,
+          });
           navigate("/user/dashboard");
         });
 

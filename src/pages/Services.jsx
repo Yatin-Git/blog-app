@@ -9,7 +9,7 @@ const Services = () => {
 
                     <Base>
                         <h2>
-                            This is services page
+                            This is service page
                         </h2>
                         <h1>Welcome : {object.user.login && object.user.data.name}</h1>
                     </Base>
